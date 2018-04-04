@@ -8,21 +8,13 @@ module.exports = {
     mode: 'development',
     // エントリーポイントの設定
     entry: {
-        app: './src/js/app.js'
-    },
-    // 出力の設定
-    output: {
-        // 出力するファイル名
-        filename: '[name].bundle.js',
-        // 出力先のパス（v2系以降は絶対パスを指定する必要がある）
-        path: path.join(__dirname, 'dist/js')
+        app: path.join(__dirname, "src/js/app.js"),
+        // app: './src/js/app.js'
     },
     devServer: {
-        // contentBase: path.join(__dirname, "dist"),
-        contentBase: "./dist",
-        compress: true,
-        hot: true,
-        port: 1972
+        contentBase: path.join(__dirname, "dist"),
+        port: 1972,
+        inline: false,
     },
     plugins: [
         // distをキレイに
@@ -31,6 +23,12 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
+    output: {
+        // 出力先のパス（v2系以降は絶対パスを指定する必要がある）
+        path: path.join(__dirname, 'dist'),
+        // 出力するファイル名
+        filename: 'bundle.js'
+    },
     // ローダーの設定
     module: {
         rules: [
