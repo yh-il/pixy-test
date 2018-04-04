@@ -1,3 +1,7 @@
 import hoge from './hoge';
+import '../scss/style.scss';
 
-console.log(123);
+let mainObj = document.getElementById('main');
+mainObj.innerText = 'house music';
+
+console.log('app.js');
