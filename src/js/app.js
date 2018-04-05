@@ -9,13 +9,8 @@ var stage = new PIXI.Container();
 stage.interactive = true;
 
 var bg = PIXI.Sprite.fromImage('img/background.jpg');
-
-bg.anchor.x = 0.5;
-bg.anchor.y = 0.5;
-
-bg.position.x = renderer.width / 2;
-bg.position.y = renderer.height / 2;
-
+bg.position.x = 0;
+bg.position.y = 0;
 stage.addChild(bg);
 
 var container = new PIXI.Container();
@@ -47,32 +42,28 @@ var count = 0;
 stage.on('click', onClick);
 stage.on('tap', onClick);
 
-function onClick()
-{
-    if(!container.mask)
-    {
+function onClick() {
+    if(!container.mask) {
         container.mask = thing;
-    }
-    else
-    {
+    } else {
         container.mask = null;
     }
 }
 
-var help = new PIXI.Text('Click to turn masking on / off.', { font:'bold 12pt Arial', fill: 'white' });
+var help = new PIXI.Text('Click to turn masking on / off.', { font:'bold 12pt Arial', fill: 'black' });
 help.position.y = renderer.height - 26;
 help.position.x = 10;
 stage.addChild(help);
 
 animate();
 
-function animate()
-{
+function animate() {
+
     // bg.rotation += 0.01;
-    // popko.rotation -= 0.01;
 
-    // pipimi.rotation += 0.01;
+    popko.rotation -= 0.01;
 
+    pipimi.rotation += 0.01;
     pipimi.scale.x = 1 + Math.sin(count) * 0.04;
     pipimi.scale.y = 1 + Math.cos(count) * 0.04;
 
@@ -80,7 +71,7 @@ function animate()
 
     thing.clear();
 
-    thing.beginFill(0x8bc5ff, 0.4);
+    thing.beginFill(0xddffdd, 0.5);
     thing.moveTo(-120 + Math.sin(count) * 20, -100 + Math.cos(count)* 20);
     thing.lineTo(-320 + Math.cos(count)* 20, 100 + Math.sin(count)* 20);
     thing.lineTo(120 + Math.cos(count) * 20, -100 + Math.sin(count)* 20);

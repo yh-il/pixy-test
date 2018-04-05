@@ -1,4 +1,3 @@
-// import hoge from './hoge';
 import '../scss/style.scss';
 import pixi from './pixi.min';
 
